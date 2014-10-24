@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Name of local Docker image.
-NANO_IMAGE=dockernano/php
+NANO_IMAGE=dockernano/php-composer
 
 # Name of local Docker container.
-NANO_CONTAINER=PHP
+NANO_CONTAINER=PHP-Composer
