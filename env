@@ -1,0 +1,13 @@
+#!/usr/bin/php
+<?php
+
+// Rewrite arguments by removing first two.
+array_splice($_SERVER['argv'], 0, 2);
+
+// Strip embedded shebang line from start of output stream.
+ob_start(function($output) {
+    return preg_replace('[\A#!/usr/bin/env php\n$]m', null, $output);
+});
+
+// Assume command is PHP source and run it.
+require $_SERVER['argv'][0];
