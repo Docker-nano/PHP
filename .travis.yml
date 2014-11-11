@@ -3,9 +3,6 @@ language: generic
 env:
   global: ROOTFS="$HOME/buildroot/output/images/rootfs.tar.xz"
 
-branches:
-  except: /^product/
-
 install:
   - sudo ./.travis.bash
   - sudo apt-get install -y pcregrep
@@ -47,8 +44,14 @@ after_failure:
 
 after_success:
   # Decrypt Git credentials file.
-  - openssl aes-256-cbc -K $encrypted_a9fc57a5424b_key -iv $encrypted_a9fc57a5424b_iv
-    -in .git-credentials.enc -out ~/.git-credentials -d
+  - |
+    (
+      for var in "${!encrypted_@}"; do
+        [[ $var = *_key ]] && key=${!var}
+        [[ $var = *_iv ]] && iv=${!var}
+      done
+      openssl aes-256-cbc -K "$key" -iv "$iv" -in .git-credentials.enc -out ~/.git-credentials -d
+    )
 
   # Work in new directory.
   - mkdir -v newproduct && cd $_

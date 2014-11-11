@@ -4,4 +4,4 @@
 NANO_IMAGE=dockernano/php
 
 # Name of local Docker container.
-NANO_CONTAINER=PHP
+NANO_CONTAINER=Buildroot-PHP
