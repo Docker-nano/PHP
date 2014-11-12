@@ -3,7 +3,7 @@ Nano PHP
 
 [![Build status][Build image]][Build]
 
-This is the [Docker Nano](https://github.com/Docker-nano) image for [PHP](http://php.net) v5.5.18.
+This is the [Docker Nano](https://github.com/Docker-nano) image for [PHP](http://php.net) v5.6.2.
 
 * Docker Hub image: [`nano/php`][Docker Hub repo]
 * Size: ~5MB
